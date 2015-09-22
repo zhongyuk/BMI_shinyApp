@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>BMI Presentation</title>
+  <meta charset="utf-8">
+  <meta name="description" content="BMI Presentation">
+  <meta name="author" content="Zhongyu K.">
+  <meta name="generator" content="slidify" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/default.css" media="all" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/phone.css" 
+    media="only screen and (max-device-width: 480px)" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/slidify.css" >
+  <link rel="stylesheet" href="libraries/highlighters/highlight.js/css/tomorrow.css" />
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->  <link rel=stylesheet href="./assets/css/ribbons.css"></link>
+
+  
+  <!-- Grab CDN jQuery, fall back to local if offline -->
+  <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js"></script>
+  <script>window.jQuery || document.write('<script src="libraries/widgets/quiz/js/jquery.js"><\/script>')</script> 
+  <script data-main="libraries/frameworks/io2012/js/slides" 
+    src="libraries/frameworks/io2012/js/require-1.0.8.min.js">
+  </script>
+  
+  
+
+</head>
+<body style="opacity: 0">
+  <slides class="layout-widescreen">
+    
+    <!-- LOGO SLIDE -->
+        <slide class="title-slide segue nobackground">
+  <hgroup class="auto-fadein">
+    <h1>BMI Presentation</h1>
+    <h2>Reproducible Pitch Presentation for BMI Calculator shinyApp</h2>
+    <p>Zhongyu K.<br/></p>
+  </hgroup>
+  <article></article>  
+</slide>
+    
+
+    <!-- SLIDES -->
+    <slide class="" id="slide-1" style="background:;">
+  <hgroup>
+    <h2>About Body Mass Index (BMI)</h2>
+  </hgroup>
+  <article data-timings="">
+    <h3>BMI formula</h3>
+
+<p>\(BMI = \frac{ WEIGHT (KG) }{ (HEIGHT (M))^2 }\)</p>
+
+<p>or</p>
+
+<p>\(BMI = \ 703 * \frac{ WEIGHT (BL) }{ (HEIGHT (IN))^2 }\)</p>
+
+<ul>
+<li>BMI does not measure body fat directly</li>
+<li>However research has shown that BMI is moderately correlated with body fat</li>
+<li>The prevalence of adult BMI greater than or equal to 30 kg/m<sup>2</sup> has greatly increased since 1070s</li>
+<li>BMI can be used for population assessment of overweight and obesity</li>
+<li><p>A well developed <a href="https://zhongyuk.shinyapps.io/BMI_shinyApp">BMI Calculator ShinyApp</a></p></li>
+<li><p>refence: <a href="http://www.cdc.gov/healthyweight/assessing/bmi/adult_bmi/index.html">Centers for Disease Control and Prevention</a></p></li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>BMI Interpretation</h2>
+  </hgroup>
+  <article data-timings="">
+    <h4>For Adults</h4>
+
+<ul>
+<li>BMI &lt; 18.5          :       underweight</li>
+<li>18.5 &lt;=  BMI &lt; 25   :       healthy weight</li>
+<li>25 &lt;= BMI &lt; 30      :       overweight</li>
+<li>BMI &gt;= 30           :       obese
+The interpretation of BMI does not depend on sex and age for adults (&gt;=20 years old)</li>
+</ul>
+
+<h4>For Children and Teens</h4>
+
+<ul>
+<li><p>BMI is interpretated differently for children and teens.</p></li>
+<li><p>For more details please read on:
+<a href="http://www.cdc.gov/healthyweight/assessing/bmi/childrens_bmi/about_childrens_bmi.html#percentile">What is a BMI percentile and how it is interpreted?</a></p></li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>BMI Calculator ShinyApp</h2>
+  </hgroup>
+  <article data-timings="">
+    <h4>The BMI Calculator ShinyApp user inputs:</h4>
+
+<ul>
+<li>Age</li>
+<li>Weight and user&#39;s preferable unit for weight (kg or bl)</li>
+<li>Height and user&#39;s preferable unit for height (m or in)</li>
+<li>A reactive submit button</li>
+</ul>
+
+<h4>The BMI Calculator ShinyApp user outputs:</h4>
+
+<ul>
+<li><p>Summary Tab</p>
+
+<ol>
+<li>Computed BMI result</li>
+<li>Interpreted Weight status</li>
+</ol></li>
+<li><p>Plot Tab</p>
+
+<ol>
+<li>Draws BMI weight status border lines</li>
+<li>Draws a black point indicates where user&#39;s weight status lies in</li>
+</ol></li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>BMI Calculator Demo</h2>
+  </hgroup>
+  <article data-timings="">
+    <h3>Emily is 25 years old and 65 inches tall, and she weights 120 pounds, what&#39;s her BMI?</h3>
+
+<pre><code class="r">EmilyBMI &lt;- calcBMI(weight=120,wUnit=&#39;pound&#39;,height=65,hUnit=&#39;inch&#39;)
+EmilyStatus &lt;- BMIstatus(age=25,BMI=EmilyBMI)
+messageBMI  &lt;- paste(&quot;Emily&#39;s BMI is:&quot;,round(EmilyBMI,2),sep=&#39; &#39;)
+messageStatus &lt;- paste(&quot;Emily&#39;s weight stauts is:&quot;, EmilyStatus,sep=&#39; &#39;)
+print(messageBMI); print(messageStatus)
+</code></pre>
+
+<pre><code>## [1] &quot;Emily&#39;s BMI is: 19.97&quot;
+</code></pre>
+
+<pre><code>## [1] &quot;Emily&#39;s weight stauts is: Healthy Weight&quot;
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+    <slide class="backdrop"></slide>
+  </slides>
+  <div class="pagination pagination-small" id='io2012-ptoc' style="display:none;">
+    <ul>
+      <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=1 title='About Body Mass Index (BMI)'>
+         1
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=2 title='BMI Interpretation'>
+         2
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=3 title='BMI Calculator ShinyApp'>
+         3
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=4 title='BMI Calculator Demo'>
+         4
+      </a>
+    </li>
+  </ul>
+  </div>  <!--[if IE]>
+    <script 
+      src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js">  
+    </script>
+    <script>CFInstall.check({mode: 'overlay'});</script>
+  <![endif]-->
+</body>
+  <!-- Load Javascripts for Widgets -->
+  
+  <!-- MathJax: Fall back to local if CDN offline but local image fonts are not supported (saves >100MB) -->
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [['$','$'], ['\\(','\\)']],
+        processEscapes: true
+      }
+    });
+  </script>
+  <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/2.0-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  <!-- <script src="https://c328740.ssl.cf1.rackcdn.com/mathjax/2.0-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+  </script> -->
+  <script>window.MathJax || document.write('<script type="text/x-mathjax-config">MathJax.Hub.Config({"HTML-CSS":{imageFont:null}});<\/script><script src="libraries/widgets/mathjax/MathJax.js?config=TeX-AMS-MML_HTMLorMML"><\/script>')
+</script>
+<!-- LOAD HIGHLIGHTER JS FILES -->
+  <script src="libraries/highlighters/highlight.js/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  <!-- DONE LOADING HIGHLIGHTER JS FILES -->
+   
+  </html>
