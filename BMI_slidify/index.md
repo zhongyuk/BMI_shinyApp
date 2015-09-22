@@ -1,5 +1,5 @@
 ---
-title       : BMI Presentation
+title       : BMI Calculator shinyApp
 subtitle    : Reproducible Pitch Presentation for BMI Calculator shinyApp
 author      : Zhongyu K.
 job         : 
